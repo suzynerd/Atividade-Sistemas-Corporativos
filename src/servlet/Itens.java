@@ -1,13 +1,15 @@
 package servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @WebServlet("/Itens")
 public class Itens extends HttpServlet {
@@ -23,11 +25,25 @@ public class Itens extends HttpServlet {
 		request.getRequestDispatcher("cadastro.jsp").forward(request, response);
 		
 	}
+	
+	@SuppressWarnings("unchecked")
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		super.doPost(request, response);
+		String text = request.getParameter("nome");
+		
+		HttpSession session = request.getSession();
+		List<String> lista = (List<String>) session.getAttribute("lista");
+		
+		if(lista == null){
+			lista = new ArrayList<String>();
+			session.setAttribute("lista", lista);
+		}
+		
+		lista.add(text);
+		request.setAttribute("lista", lista);
+		
+		request.getRequestDispatcher("ListaItens.jsp").forward(request, response);
 	}
 	
 }
