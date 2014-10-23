@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<servlet>
+	<servlet-name>olamundo1</servlet-name>
+	<servlet-class>servlet.Alomundo1</servlet-class>	
+</servlet>
+<servlet-mapping>
+	<servlet-name>olamundo1</servlet-name>
+	<url-pattern>/ola1</url-pattern>
+</servlet-mapping>
