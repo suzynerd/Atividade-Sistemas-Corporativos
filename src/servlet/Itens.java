@@ -9,25 +9,25 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class AloMundo1
- */
-@WebServlet("/AloMundo1")
-public class AloMundo1 extends HttpServlet {
+@WebServlet("/Itens")
+public class Itens extends HttpServlet {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
 	@Override
-	protected void service(HttpServletRequest request, HttpServletResponse response)
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String html = "<html><body>Oi Suzy!</body></html>";
-		response.setContentType("text/html");
-		PrintWriter writer = response.getWriter();
-		writer.write(html);
+		request.getRequestDispatcher("cadastro.jsp").forward(request, response);
 		
+	}
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		super.doPost(request, response);
 	}
 	
 }
