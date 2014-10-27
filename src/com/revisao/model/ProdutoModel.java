@@ -3,7 +3,7 @@ package com.revisao.model;
 public class ProdutoModel {
 
     private int produtoid;
-    private String descricao,produtonome;
+    private String produtonome,descricao;
 
     
     public int getProdutoid() {
@@ -13,12 +13,15 @@ public class ProdutoModel {
         this.produtoid = produtoid;
     }
     
+    
     public String getProdutoNome() {
         return produtonome;
     }
     public void setProdutoNome(String produtonome) {
         this.produtonome = produtonome;
     }
+    
+    
     public String getDescricao() {
         return descricao;
     }
@@ -28,6 +31,6 @@ public class ProdutoModel {
 
     @Override
     public String toString() {
-        return "Produtos [produtoid=" + produtoid + ", descricao=" + descricao+ "]";
+        return "ProdutoModel [produtoid=" + produtoid + ", produtonome=" + produtonome + ", descricao=" + descricao + "]";
     }    
 }

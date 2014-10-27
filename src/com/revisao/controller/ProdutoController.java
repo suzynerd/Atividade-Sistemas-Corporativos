@@ -18,7 +18,7 @@ public class ProdutoController extends HttpServlet {
 	
 	 private static final long serialVersionUID = 1L;
 	    private static String INSERT_OR_EDIT = "/produto.jsp";
-	    private static String LIST_PRODUTO = "/listproduto.jsp";
+	    private static String LIST_PRODUTO = "/listProduto.jsp";
 	    private ProdutoDao dao;
 
 	    public ProdutoController() {
@@ -31,12 +31,16 @@ public class ProdutoController extends HttpServlet {
 		String action = request.getParameter("action");
 
 		if (action.equalsIgnoreCase("delete")) {
-			int produtoid = Integer.parseInt(request.getParameter("produtoid"));
-			dao.deleteProduto(produtoid);
+			int produtoId = Integer.parseInt(request.getParameter("produtoid"));
+			dao.deleteProduto(produtoId);
 			forward = LIST_PRODUTO;
 			request.setAttribute("produtos", dao.getAllProduto());
-			
-		} else if (action.equalsIgnoreCase("listProdutos")) {
+		 } else if (action.equalsIgnoreCase("edit")){
+	            forward = INSERT_OR_EDIT;
+	            int produtoID = Integer.parseInt(request.getParameter("produtoid"));
+	            ProdutoModel produto = dao.getProdutoById(produtoID);
+	            request.setAttribute("produto", produto);	
+		} else if (action.equalsIgnoreCase("listProduto")) {
 			forward = LIST_PRODUTO;
 			request.setAttribute("produtos", dao.getAllProduto());
 			
