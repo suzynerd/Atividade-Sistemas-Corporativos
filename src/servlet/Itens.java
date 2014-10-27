@@ -13,24 +13,20 @@ import javax.servlet.http.HttpSession;
 
 @WebServlet("/Itens")
 public class Itens extends HttpServlet {
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		request.getRequestDispatcher("cadastro.jsp").forward(request, response);
-		
+		request.getRequestDispatcher("cadastro.jsp").forward(request, response);		
 	}
 	
 	@SuppressWarnings("unchecked")
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String text = request.getParameter("nome");
+		String nome = request.getParameter("nome");
+		String descricao = request.getParameter("descricao");
 		
 		HttpSession session = request.getSession();
 		List<String> lista = (List<String>) session.getAttribute("lista");
@@ -40,7 +36,8 @@ public class Itens extends HttpServlet {
 			session.setAttribute("lista", lista);
 		}
 		
-		lista.add(text);
+		lista.add(nome+"-"+descricao);
+		//lista.add(descricao);
 		request.setAttribute("lista", lista);
 		
 		request.getRequestDispatcher("ListaItens.jsp").forward(request, response);

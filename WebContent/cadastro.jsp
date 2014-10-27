@@ -4,11 +4,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Item</title>
+<title>Cadastre de Item</title>
 </head>
 <body>
 	<form action="" method="post">
 		<input type="text" name="nome">
+		<input type="text" name="descricao">
 		<input type="submit" value="Enviar">
 	</form>
 </body>

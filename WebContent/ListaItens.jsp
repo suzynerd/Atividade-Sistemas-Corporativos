@@ -9,7 +9,7 @@
 </head>
 <body>
 	<ul>
-		<c:forEach items="${lista} var="item">
+		<c:forEach items="${lista}" var="item">
 			<li>${item}</li>
 		</c:forEach>
 	</ul>
