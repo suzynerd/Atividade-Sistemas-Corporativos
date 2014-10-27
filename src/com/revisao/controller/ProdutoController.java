@@ -3,6 +3,7 @@ package com.revisao.controller;
 import java.io.IOException;
 
 
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.revisao.dao.ProdutoDao;
+import com.revisao.model.ProdutoModel;
 
 
 public class ProdutoController extends HttpServlet {
@@ -46,6 +48,25 @@ public class ProdutoController extends HttpServlet {
 		view.forward(request, response);
 	}
 	    
-
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        ProdutoModel produto = new ProdutoModel();
+        produto.setProdutoNome(request.getParameter("produtonome"));
+        produto.setDescricao(request.getParameter("descricao"));
+        
+        String produtoid = request.getParameter("produtoid");
+        if(produtoid == null || produtoid.isEmpty())
+        {
+            dao.addProduto(produto);
+        }
+        else
+        {
+        	produto.setProdutoid(Integer.parseInt(produtoid));
+            dao.updateProduto(produto);
+        }
+        RequestDispatcher view = request.getRequestDispatcher(LIST_PRODUTO);
+        request.setAttribute("produtos", dao.getAllProduto());
+        view.forward(request, response);
+    }
 
 }
