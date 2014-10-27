@@ -1,0 +1,10 @@
+create database ClassidifadosDB;
+use ClassidifadosDB;
+
+
+CREATE TABLE ClassidifadosDB.`produtos` (
+  `produtoid` int(11) NOT NULL AUTO_INCREMENT,
+  `produtonome` varchar(45) DEFAULT NULL,
+  `descricao` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`produtoid`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8

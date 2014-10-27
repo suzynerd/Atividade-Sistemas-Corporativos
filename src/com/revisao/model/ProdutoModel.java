@@ -28,6 +28,6 @@ public class ProdutoModel {
 
     @Override
     public String toString() {
-        return "User [produtoid=" + produtoid + ", descricao=" + descricao+ "]";
+        return "Produtos [produtoid=" + produtoid + ", descricao=" + descricao+ "]";
     }    
 }

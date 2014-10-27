@@ -37,7 +37,7 @@ public class ProdutoDao {
         try {
             PreparedStatement preparedStatement = connection
                     .prepareStatement("delete from produtos where produtoid=?");
-            // Parameters start with 1
+
             preparedStatement.setInt(1, produtoid);
             preparedStatement.executeUpdate();
 
