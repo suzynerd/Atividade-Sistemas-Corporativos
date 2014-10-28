@@ -21,7 +21,7 @@
         Descrição : <input
             type="text" name="descricao"
             value="<c:out value="${user.descricao}" />" /> <br /> 
-        <input type="submit" value="Submit" />
+            <input type="submit" value="Enviar">
     </form>
 </body>
 </html>

@@ -82,25 +82,5 @@ public class ProdutoDao {
 
         return produtos;
     }
-    
-    public ProdutoModel getProdutoById(int produtoId) {
-    	ProdutoModel produto = new ProdutoModel();
-        try {
-            PreparedStatement preparedStatement = connection.
-                    prepareStatement("select * from produtos where produtoid=?");
-            preparedStatement.setInt(1, produtoId);
-            ResultSet rs = preparedStatement.executeQuery();
-
-            if (rs.next()) {
-            	produto.setProdutoid(rs.getInt("produtoid"));
-            	produto.setProdutoNome(rs.getString("produtonome"));
-            	produto.setDescricao(rs.getString("descricao"));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        return produto;
-    }
 
 }

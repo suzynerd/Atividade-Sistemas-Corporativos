@@ -27,20 +27,16 @@ public class ProdutoController extends HttpServlet {
 	    }
 	    
 	protected void doGet(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
-		String forward = "";
+		String forward;
 		String action = request.getParameter("action");
 
 		if (action.equalsIgnoreCase("delete")) {
-			int produtoId = Integer.parseInt(request.getParameter("produtoid"));
-			dao.deleteProduto(produtoId);
+			int produtoid = Integer.parseInt(request.getParameter("produtoid"));
+			dao.deleteProduto(produtoid);
 			forward = LIST_PRODUTO;
 			request.setAttribute("produtos", dao.getAllProduto());
-		 } else if (action.equalsIgnoreCase("edit")){
-	            forward = INSERT_OR_EDIT;
-	            int produtoID = Integer.parseInt(request.getParameter("produtoid"));
-	            ProdutoModel produto = dao.getProdutoById(produtoID);
-	            request.setAttribute("produto", produto);	
-		} else if (action.equalsIgnoreCase("listProduto")) {
+			
+		} else if (action.equalsIgnoreCase("listProdutos")) {
 			forward = LIST_PRODUTO;
 			request.setAttribute("produtos", dao.getAllProduto());
 			
